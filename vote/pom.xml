@@ -291,7 +291,16 @@
 	</distributionManagement>
 
 	<build>
-
+		<filters>
+			<filter>${basedir}/src/main/webapp/META-INF/${env}.properties</filter>
+		</filters>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering> <!-- 是否使用过滤器 -->
+			</resource>
+		</resources>
+		<finalName>${deploy.warname}</finalName>
 		<pluginManagement>
 			<plugins>
 				<!-- 跳过单元测试 -->
@@ -330,6 +339,7 @@
 					<path>${deploy.contextpath}</path> </configuration> </plugin> -->
 			</plugins>
 		</pluginManagement>
+		
 	</build>
 
 	<profiles>
@@ -338,7 +348,7 @@
 			<id>dev</id>
 			<properties>
 				<env>dev</env>
-				<deploy.warname>uic-dev</deploy.warname>
+				<deploy.warname>vote-dev</deploy.warname>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置 -->
@@ -349,7 +359,7 @@
 			<id>testing</id>
 			<properties>
 				<env>testing</env>
-				<deploy.warname>uic-testing</deploy.warname>
+				<deploy.warname>vote-testing</deploy.warname>
 			</properties>
 		</profile>
 		<!-- 预发布环境 -->
@@ -357,7 +367,7 @@
 			<id>pre</id>
 			<properties>
 				<env>pre</env>
-				<deploy.warname>uic-pre</deploy.warname>
+				<deploy.warname>vote-pre</deploy.warname>
 			</properties>
 		</profile>
 		<!-- 生产环境 -->
@@ -365,10 +375,9 @@
 			<id>production</id>
 			<properties>
 				<env>production</env>
-				<deploy.warname>uic</deploy.warname>
+				<deploy.warname>vote</deploy.warname>
 			</properties>
 		</profile>
 	</profiles>
 
-	
 </project>

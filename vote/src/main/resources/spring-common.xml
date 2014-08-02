@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+    >
+
+	<context:annotation-config />
+
+
+
+	<!-- service 层注解 -->
+	<context:component-scan base-package="com.zhuoxuan.vote.service.impl" />
+
+
+
+	<!-- 支持文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1048576" /><!-- 最大文件为1MB -->
+	</bean>
+	<!-- 启动JSON格式的配置 -->
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- druid 方法 web监控配置 -->
+<!-- 	<bean id="druid-stat-interceptor" -->
+<!-- 		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" -->
+<!-- 		scope="prototype"> -->
+<!-- 		<property name="patterns"> -->
+<!-- 			<list> -->
+<!-- 				<value>com.mogujie.marketing.service.*</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+<!-- 	<aop:config> -->
+<!-- 		<aop:advisor advice-ref="druid-stat-interceptor" -->
+<!-- 			pointcut-ref="druid-stat-pointcut" /> -->
+<!-- 	</aop:config> -->
+
+</beans>
