@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- SurveyDO Ibatis 映射关系配置文件 -->
-<mapper namespace="com.zhuoxuan.vote.entity.SurveyDO">
+<mapper namespace="com.zhuoxuan.vote.dao.SurveyDao">
 
     <!-- 开发负责人：卓轩
     	 功能说明：surveyDO表查询 -->
@@ -10,8 +10,10 @@
 		INSERT INTO vote_survey (groupId,title,type,img,options,creator,
 				start_time,end_time,created,updated)
 		VALUES(#{groupId},#{title},#{type},#{img},#{options},
-					#{creator},#{startTime},#{endTime},#{createTime},#{updated}
-
+					#{creator},#{startTime},#{endTime},#{createTime},#{updated})
+	 <selectKey resultType="int" keyColumn="survey_id" keyProperty="surveyId">
+		SELECT LAST_INSERT_ID()
+	 </selectKey>
 	</insert>
 
 

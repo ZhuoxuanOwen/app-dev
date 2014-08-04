@@ -18,6 +18,6 @@ public interface SurveyDao {
 	 * 添加文件数据
 	 * @param surveyDO
 	 */
-	public void addSurvey(SurveyDO surveyDO);
+	public Integer addSurvey(SurveyDO surveyDO);
 
 }

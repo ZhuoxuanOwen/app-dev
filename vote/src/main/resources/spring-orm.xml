@@ -15,6 +15,11 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
+	<!-- SurveyDao  -->
+	<bean id="optionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhuoxuan.vote.dao.OptionDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 
 </beans>

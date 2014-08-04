@@ -13,6 +13,8 @@
 <link href="<%=path %>/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 <link href="<%=path %>/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
 <link href="<%=path %>/assets/styles.css" rel="stylesheet" media="screen">
+<link href="<%=path %>/vendors/datepicker.css" rel="stylesheet" media="screen">
+
 </head>
 <body>
 	  <jsp:include page="/common/head.jsp" />
@@ -51,14 +53,14 @@
                                         <div class="control-group">
                                           <label class="control-label" for="disabledInput">开始时间</label>
                                           <div class="controls">
-                                            <input name="startTime"  type="text" class="span3" id="date01" value="">
+                                            <input name="startTime"  type="text" class="span3 datepicker " id="date01" value="">
                                           </div>
                                         </div>
                                         <div class="control-group">
                                           <label class="control-label" for="optionsCheckbox2">结束时间</label>
                                           <div class="controls">
                                             <label>
-                                              <input name="endTime" type="text" class="span3" id="date01" value="">
+                                              <input name="endTime" type="text" class="span3 datepicker" id="date01" value="">
                                             </label>
                                           </div>
                                         </div>
@@ -68,6 +70,12 @@
                                             <label>
                                               <textarea name="options" class="span6" rows="10" cols="120" placeholder="选项之间以英文;相隔开"></textarea>
                                             </label>
+                                          </div>
+                                        </div>
+                                        <div class="control-group">
+                                          <label class="control-label" for="focusedInput">创建人</label>
+                                          <div class="controls">
+                                            <input type="text" class="span6" id="creator" name="creator" data-provide="typeahead" data-items="4" value="卓轩" >
                                           </div>
                                         </div>
                                         <div class="form-actions">
@@ -82,9 +90,23 @@
                         </div>
                         <!-- /block -->
         </div>
+        <script src="<%=path %>/vendors/jquery-1.9.1.min.js"></script>
+        <script src="<%=path %>/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<%=path %>/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script src="<%=path %>/assets/scripts.js"></script>
+        <script src="<%=path %>/vendors/bootstrap-datepicker.js"></script>
         <script type="text/javascript">
         
         jQuery(function() {
+        	//时间控件
+        	$('.datepicker').datepicker({
+        		  format: 'yyyy-mm-dd',
+    		      weekStart: 1,
+    		      autoclose: true,
+    		      todayBtn: 'linked',
+    		      language: 'zh-CN'
+        	});
+        	
         	
         	//添加测试用例
 			$("#btnSaveSurvey").click(function (){
@@ -122,7 +144,6 @@
 					});
 				 });
 		  });
-        });
         	
         </script>
 </body>

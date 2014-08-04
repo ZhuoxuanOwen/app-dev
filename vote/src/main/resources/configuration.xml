@@ -27,10 +27,12 @@
 	<!-- 全局别名设置，在映射文件中只需写别名，而不必写出整个类路径 -->
 	<typeAliases>
 		<typeAlias alias="surveyDO" type="com.zhuoxuan.vote.entity.SurveyDO" />
+		<typeAlias alias="optionDO" type="com.zhuoxuan.vote.entity.OptionDO" />
 	</typeAliases>
 	<!-- 非注解的sql映射文件配置，如果使用mybatis注解，该mapper无需配置，但是如果mybatis注解中包含@resultMap注解，则mapper必须配置，给resultMap注解使用 -->
 	<mappers>
 		<mapper resource="mapper/survey_sql_map.xml" />
+		<mapper resource="mapper/option_sql_map.xml" />
 	</mappers>
 </configuration>
 

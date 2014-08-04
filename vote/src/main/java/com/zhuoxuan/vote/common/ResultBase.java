@@ -64,8 +64,7 @@ public class ResultBase<T> implements Serializable {
 	 * @param value
 	 * @return
 	 */
-	public ResultBase<T> setReturnErrorMsg(int errorCode, String value){
-		this.setErrorCode(errorCode);
+	public ResultBase<T> setReturnErrorMsg(String value){
 		this.setSuccess(false);
 		this.setErrorMsg(value);
 		return this;

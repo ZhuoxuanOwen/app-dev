@@ -61,11 +61,12 @@ public class SurveyController {
 	public ResultBase<Boolean> saveSurvey(HttpServletRequest request,HttpServletResponse response,
 			@RequestParam("title") String title,@RequestParam("type") int type,
 			@RequestParam("startTime") String startTime,@RequestParam("endTime") String endTime,
-			@RequestParam("options") String options){
+			@RequestParam("options") String options,@RequestParam("creator") String creator){
 		
 		SurveyDO surveyDO = new SurveyDO();
 		surveyDO.setTitle(title);
 		surveyDO.setType(type);
+		surveyDO.setCreator(creator);
 		surveyDO.setStartTime(DateUtil.getDate(startTime, DateUtil.PT_DATE));
 		surveyDO.setEndTime(DateUtil.getDate(endTime, DateUtil.PT_DATE));
 		surveyDO.setOptions(options);

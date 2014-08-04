@@ -50,7 +50,7 @@ public class SurveyDO implements Serializable{
 	/**
 	 * 创建时间
 	 */
-	private String createTime;
+	private Date createTime;
 	
 	/**
 	 * 开始时间
@@ -129,11 +129,13 @@ public class SurveyDO implements Serializable{
 		this.options = options;
 	}
 
-	public String getCreateTime() {
+	
+
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
