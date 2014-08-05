@@ -20,44 +20,35 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">系统流程定义列表</div>
+                                <div class="muted pull-left">用户列表</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group" style="padding-bottom: 20px;">
-                                         <a href="<%=path %>/workflow/process_define_upload.jsp"><button class="btn btn-success">发布流程 <i class="icon-plus icon-white"></i></button></a>
+                                         <a href="<%=path %>/workflow/user/workflow_user_add.jsp"><button class="btn btn-success">添加用户 <i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
-                                         <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
-                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Print</a></li>
-                                            <li><a href="#">Save as PDF</a></li>
-                                            <li><a href="#">Export to Excel</a></li>
-                                         </ul>
                                       </div>
                                    </div>
                                     
                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
                                         <thead>
                                             <tr>
-                                                <th>名称</th>
-                                                <th>版本</th>
-                                                <th>Key</th>
-<!--                                                 <th>命名空间</th> -->
-                                                <th>描述</th>
+                                                <th>用户ID</th>
+                                                <th>姓名</th>
+                                                <th>电子邮件</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           <c:forEach items="${processInstanceList }" var="pd">
+                                           <c:forEach items="${userList }" var="user">
                                            	 <tr class="odd gradeX">
-                                                <td>${pd.processDefinitionId }</td>
-                                                <td>${pd.name }</td>
+                                                <td>${user.id }</td>
+                                                <td>${user.firstName }•${user.lastName }</td>
+                                                <td>${user.email }</td>
                                                 <td>
-                                                	<button class="btn btn-success startProcess" data-key="${pd.processDefinitionId }">申请</button>
-                                                	
-                                                	
+                                                	<button class="btn btn-success" data-key="${user.id }">删除</button>
                                                 </td>
                                             </tr>
                                            </c:forEach>

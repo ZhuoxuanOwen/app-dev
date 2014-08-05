@@ -25,7 +25,7 @@
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a tabindex="-1" href="login.html">Logout</a>
+                                        <a tabindex="-1" href="<%=path%>/login.jsp">退出</a>
                                     </li>
                                 </ul>
                             </li>
@@ -109,10 +109,10 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a tabindex="-1" href="#">User List</a>
+                                        <a tabindex="-1" href="<%=path%>/user/userQuery.do?cpage=1">用户列表</a>
                                     </li>
                                     <li>
-                                        <a tabindex="-1" href="#">Search</a>
+                                        <a tabindex="-1" href="<%=path%>/workflow/user/workflow_user_add.jsp">添加用户</a>
                                     </li>
                                     <li>
                                         <a tabindex="-1" href="#">Permissions</a>

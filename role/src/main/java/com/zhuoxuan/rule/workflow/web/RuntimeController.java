@@ -70,6 +70,8 @@ public class RuntimeController {
 		
 		modelMap.put("processInstanceList", processInstanceList);
 		
+		
+		
 		return new ModelAndView("workflow/instance_process_list");
 	}
 	

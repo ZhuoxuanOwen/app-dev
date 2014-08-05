@@ -3,14 +3,17 @@ package com.zhuoxuan.role.common;
 /**
  * 
  * <p>
- * 调查常量
+ * 常量
  * </p>
  * 
  * @author 卓轩
  * @创建时间：2014年8月2日
  * @version： V1.0
  */
-public class VoteConstants {
+public class RoleConstants {
+	
+	public final static String LoginUser = "LoginUser";
+	
 
 	//组
 	public enum VoteGroup {
