@@ -1,7 +1,10 @@
 package com.zhuoxuan.rule.workflow.web;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.identity.User;
@@ -43,7 +46,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/userLogin")
 	@ResponseBody
-	public ResultBase<Boolean> workflowUserLogin(HttpServletRequest request,
+	public ResultBase<Boolean> userLogin(HttpServletRequest request,
 			@RequestParam("email") String email,
 			@RequestParam("pwd") String pwd){
 		ResultBase<Boolean> result = new ResultBase<Boolean>();
@@ -69,4 +72,21 @@ public class LoginController {
 		}
 	}
 	
+	/**
+	 * 用户登录退出
+	 */
+	@RequestMapping("/userLoginOut")
+	public void userLoginOut(HttpServletRequest request,HttpServletResponse response){
+		
+		try {
+			
+			request.getSession().removeAttribute(RoleConstants.LoginUser);
+			request.getSession().invalidate();
+			response.sendRedirect("/index.jsp");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

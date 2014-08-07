@@ -5,7 +5,8 @@
     <endEvent id="endevent1" name="End"></endEvent>
     <userTask id="ut_submitFristApporve" name="提交初审"></userTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="ut_submitFristApporve"></sequenceFlow>
-    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
+    <parallelGateway id="parallelgateway1" name="Parallel Gateway">
+    </parallelGateway>
     <sequenceFlow id="flow2" sourceRef="ut_submitFristApporve" targetRef="ut_xiaobApporve_1"></sequenceFlow>
     <sequenceFlow id="firstRevoke" name="初审不通过" sourceRef="parallelgateway1" targetRef="endevent1"></sequenceFlow>
     <userTask id="ut_xiaobApporve_1" name="小编初审"></userTask>

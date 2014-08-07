@@ -1,6 +1,7 @@
+<%@page import="org.activiti.engine.identity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -16,7 +17,16 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> Vincent Gabriel <i class="caret"></i>
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> 
+                                <c:choose>
+                                	<c:when test="${LoginUser != null}">
+                                		欢迎您，${LoginUser.firstName}${LoginUser.lastName }
+                                	</c:when>
+                                	<c:otherwise>
+                                		您还没有登录，请登录
+                                	</c:otherwise>
+                                </c:choose>
+                                <i class="caret"></i>
 
                                 </a>
                                 <ul class="dropdown-menu">
@@ -53,27 +63,16 @@
                                         <a href="<%=path%>/workflow/processDef/processDefineQuery.do?cpage=1"> 流程定义 <i class="icon-arrow-right"></i>
 
                                         </a>
-                                        <ul class="dropdown-menu sub-menu">
-                                            <li>
-                                                <a href="#">Reports</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Logs</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Errors</a>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="#">SEO Settings</a>
+                                        <a href="<%=path%>/workflow/task/theTask.do?cpage=1">我的代办任务</a>
                                     </li>
                                     <li>
-                                        <a href="#">Other Link</a>
+                                        <a href="#">我的已办任务</a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#">Other Link</a>
+                                        <a href="#">运行中的流程监控</a>
                                     </li>
                                     <li>
                                         <a href="#">Other Link</a>

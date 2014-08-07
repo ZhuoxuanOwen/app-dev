@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhuoxuan.role.common.ResultBase;
@@ -40,6 +42,7 @@ public class RuntimeController {
 	 * @return
 	 */
 	@RequestMapping("/startProcess")
+	@ResponseBody
 	public ResultBase<Boolean> startProcess(@RequestParam("key") String key){
 		ResultBase<Boolean> result = new ResultBase<Boolean>();
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(key);
@@ -69,7 +72,6 @@ public class RuntimeController {
 			.listPage(start, 20);
 		
 		modelMap.put("processInstanceList", processInstanceList);
-		
 		
 		
 		return new ModelAndView("workflow/instance_process_list");

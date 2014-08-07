@@ -20,21 +20,14 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">系统流程定义列表</div>
+                                <div class="muted pull-left">运行中得流程监控</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group" style="padding-bottom: 20px;">
-                                         <a href="<%=path %>/workflow/process_define_upload.jsp"><button class="btn btn-success">发布流程 <i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
-                                         <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
-                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Print</a></li>
-                                            <li><a href="#">Save as PDF</a></li>
-                                            <li><a href="#">Export to Excel</a></li>
-                                         </ul>
                                       </div>
                                    </div>
                                     
@@ -76,6 +69,11 @@
      <script src="<%=path %>/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
      <script src="<%=path %>/assets/scripts.js"></script>
      <script src="<%=path %>/vendors/datatables/js/jquery.dataTables.min.js"></script>
+     <script type="text/javascript">
+     
+       
+ 	
+     </script>
      
 </body>
 </html>

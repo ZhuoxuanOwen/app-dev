@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 蘑菇街流程定义 -->
+<mogu-workflow>
+    
+    <process  id="itemApporve" category="Marketing"  name="商品审核流程" key="itemApporve" 
+                 description="蘑菇街商品审核流程、初审、复审">
+        
+        <startEvent id="apporveStart" name="流程开始审核"></startEvent>
+        <endEvent id="apporveEnd" name="结束"></endEvent>
+      
+        
+        <userTask id="" name="">
+            
+        </userTask>
+        
+        <gateWay>
+            
+            
+        </gateWay>
+            
+        <sequenceFlow source="" target=""></sequenceFlow>
+    </process>
+    
+    
+</mogu-workflow>

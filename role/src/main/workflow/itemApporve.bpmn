@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="itemApporve" name="itemApporve" isExecutable="true">
+  <process id="itemApporve" name="itemApporve" isExecutable="true" >
     <startEvent id="startevent1" name="Start"></startEvent>
-    <endEvent id="endevent1" name="End"></endEvent>
+    <endEvent id="endevent1" name="End" ></endEvent>
     <userTask id="ut_submitFristApporve" name="提交初审"></userTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="ut_submitFristApporve"></sequenceFlow>
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
@@ -10,7 +10,10 @@
     <sequenceFlow id="firstRevoke" name="初审不通过" sourceRef="parallelgateway1" targetRef="endevent1"></sequenceFlow>
     <userTask id="ut_xiaobApporve_1" name="小编初审"></userTask>
     <sequenceFlow id="flow3" sourceRef="ut_xiaobApporve_1" targetRef="parallelgateway1"></sequenceFlow>
-    <userTask id="ut_xiaobApporve_2" name="小编复审"></userTask>
+    <userTask id="ut_xiaobApporve_2" name="小编复审">
+    	<property > 
+    	</property>
+    </userTask>
     <sequenceFlow id="pass" name="通过" sourceRef="parallelgateway1" targetRef="ut_xiaobApporve_2"></sequenceFlow>
     <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
     <sequenceFlow id="flow4" sourceRef="ut_xiaobApporve_2" targetRef="parallelgateway2"></sequenceFlow>
