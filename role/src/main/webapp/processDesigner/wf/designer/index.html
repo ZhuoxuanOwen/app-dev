@@ -250,16 +250,16 @@ function exportProcessDef(obj){
 </script>
 
 <body id="designer" class="easyui-layout">
-	<div region="west" split="true" iconCls="palette-icon" title="Palette" style="width:150px;">
+	<div region="west" split="true" iconCls="palette-icon" title="流程组件" style="width:150px;">
 		<div class="easyui-accordion" fit="true" border="false">
 <!--				<div id="connection" title="Connection" iconCls="palette-menu-icon" class="palette-menu">-->
 <!--					<a href="##" class="easyui-linkbutton" plain="true" iconCls="sequence-flow-icon">SequenceFlow</a><br>-->
 <!--				</div>-->
-				<div id="event" title="Event" iconCls="palette-menu-icon" class="palette-menu">
+				<div id="event" title="事件" iconCls="palette-menu-icon" class="palette-menu">
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="start-event-icon">Start</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="end-event-icon">End</a><br>
 				</div>
-				<div id="task" title="Task" iconCls="palette-menu-icon" selected="true" class="palette-menu">
+				<div id="task" title="任务" iconCls="palette-menu-icon" selected="true" class="palette-menu">
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="user-task-icon" wfModel="UserTask">User Task</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="manual-task-icon" wfModel="ManualTask">Manual Task</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="service-task-icon" wfModel="ServiceTask">Service Task</a><br>
@@ -270,11 +270,11 @@ function exportProcessDef(obj){
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="subprocess-icon">SubProcess</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="callactivity-icon" wfModel="CallActivity">CallActivity</a><br>
 				</div>
-				<div id="gateway" title="Gateway" iconCls="palette-menu-icon" class="palette-menu">
+				<div id="gateway" title="路由" iconCls="palette-menu-icon" class="palette-menu">
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="parallel-gateway-icon" wfModel="ParallelGateway" iconImg="../../js/designer/icons/type.gateway.parallel.png">ParallelGateway</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="exclusive-gateway-icon" wfModel="ExclusiveGateway" iconImg="../../js/designer/icons/type.gateway.exclusive.png">ExclusiveGateway</a><br>
 				</div>
-				<div id="boundary-event" title="Boundary event" iconCls="palette-menu-icon" class="palette-menu">
+				<div id="boundary-event" title="其它事件" iconCls="palette-menu-icon" class="palette-menu">
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="timer-boundary-event-icon">TimerBoundaryEvent</a><br>
 					<a href="##" class="easyui-linkbutton" plain="true" iconCls="error-boundary-event-icon">ErrorBoundaryEvent</a><br>
 				</div>

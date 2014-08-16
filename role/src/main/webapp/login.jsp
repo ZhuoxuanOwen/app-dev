@@ -18,7 +18,7 @@
       <form id="frmUserLogin" class="form-signin">
         <h2 class="form-signin-heading">请登录系统</h2>
         <input type="text" class="input-block-level" id="email"   name="email"  placeholder="电子邮件">
-        <input type="password" class="input-block-level"  id="pwd" name="pwd" placeholder="密码">
+        <input type="password" class="input-block-level"  id="pwd" name="pwd" placeholder="密码" value="zhuoxuan@mogujie.com">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> 记住我
         </label>

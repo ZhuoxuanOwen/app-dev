@@ -4,7 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import org.activiti.engine.FormService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.form.FormData;
+import org.activiti.engine.form.FormProperty;
+import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.task.Task;
 import org.springframework.stereotype.Controller;
@@ -13,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zhuoxuan.role.common.ResultBase;
 import com.zhuoxuan.role.common.RoleConstants;
+import com.zhuoxuan.rule.workflow.ao.TaskAO;
+import com.zhuoxuan.rule.workflow.entity.UserTask;
 
 /**
  * 
@@ -31,6 +39,10 @@ public class TaskController {
 	
 	@Resource
 	private TaskService taskService;
+	@Resource
+	private FormService formService;
+	@Resource
+	private TaskAO taskAO;
 	
 	/**
 	 * 我的代办任务列表
@@ -48,12 +60,41 @@ public class TaskController {
 		User user = (User)loginUser;
 		String email = user.getEmail();
 		//调用流程引擎接口查询
-		int start = (cpage -1) * 20;
-		List<Task> taskOneList =  taskService.createTaskQuery().orderByTaskPriority().orderByDueDate().
-				taskCandidateUser(email).listPage(start, 20);
-		
-		modelMap.put("taskList", taskOneList);
+		ResultBase<List<UserTask>> resultBase = taskAO.mergeUserTask(email, cpage);
+		if (resultBase.isSuccess()) {
+			modelMap.put("taskList", resultBase.getValue());
+		}else{
+			modelMap.put("errorMsg", "获取当前登录人的代办任务异常，"+resultBase.getErrorMsg());
+		}
 		return taskListView;
 	}
+	
+	/**
+	 * Task 处理详情页
+	 */
+	@RequestMapping("/taskClaim")
+	public ModelAndView taskClaim(ModelMap modelMap,@RequestParam("taskId") String taskId){
+		
+		ModelAndView taskClaimView = new ModelAndView("workflow/task_claim");
+		//调用流程引擎查询出任务
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		if(task == null){
+			modelMap.put("errorMsg", "需要处理的任务不存在");
+			return taskClaimView;
+		}
+		//调用接口获取任务详细信息
+		UserTask userTask = taskAO.mergeUserTask(task);
+		modelMap.put("ut", userTask);
+		//处理任务的form
+		FormData formData =	formService.getTaskFormData(taskId);
+		if(formData != null){
+		  List<FormProperty> formPropertieList = formData.getFormProperties();
+		  modelMap.put("formProperties", formPropertieList);
+		}
+		return taskClaimView;
+	}
+	
+	
+	
 
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn20" id="review-definitions">
+  <process id="activitiReview" name="Review And Approve Activiti Process" isExecutable="true">
+    <startEvent id="startevent1" name="Start">
+      <extensionElements>
+        <activiti:formProperty id="creator" name="申请人"></activiti:formProperty>
+      </extensionElements>
+    </startEvent>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <userTask id="deptLeaderApporve" name="部门经理审核"></userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="submitApply"></sequenceFlow>
+    <userTask id="zcMgmtAppore" name="资产管理员审批"></userTask>
+    <sequenceFlow id="flow2" sourceRef="deptLeaderApporve" targetRef="zcMgmtAppore"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="zcMgmtAppore" targetRef="endevent1"></sequenceFlow>
+    <userTask id="submitApply" name="提交申请单">
+      <extensionElements>
+        <activiti:formProperty id="model" name="电脑型号" required="true"></activiti:formProperty>
+        <activiti:formProperty id="uname" name="申请人"></activiti:formProperty>
+        <activiti:formProperty id="reason" name="申请原因"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow4" sourceRef="submitApply" targetRef="deptLeaderApporve"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_activitiReview">
+    <bpmndi:BPMNPlane bpmnElement="activitiReview" id="BPMNPlane_activitiReview">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="680.0" y="250.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="deptLeaderApporve" id="BPMNShape_deptLeaderApporve">
+        <omgdc:Bounds height="55.0" width="105.0" x="370.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="zcMgmtAppore" id="BPMNShape_zcMgmtAppore">
+        <omgdc:Bounds height="55.0" width="105.0" x="530.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="submitApply" id="BPMNShape_submitApply">
+        <omgdc:Bounds height="55.0" width="105.0" x="190.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="85.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="190.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="475.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="635.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="250.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="295.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

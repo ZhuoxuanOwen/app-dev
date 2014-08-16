@@ -58,7 +58,7 @@
 <%--                                                 <td> ${pd.category }</td> --%>
                                                 <td>${pd.description }</td>
                                                 <td>
-                                                	<button class="btn btn-success startProcess" data-key="${pd.key }">申请</button>
+                                                	<button class="btn btn-success defineApply" data-key="${pd.key }">申请</button>
                                                 	
                                                 	
                                                 </td>
@@ -83,28 +83,16 @@
 	  jQuery(function() {
     	 
     	 //开始，启动一个流程
- 		$(".startProcess").click(function (){
+ 		$(".defineApply").click(function (){
  			
  			var key = $(this).data("key");
- 			var param = "key="+key;
- 			$.ajax({
- 					type : 'post',
- 					url : '<%=path%>/workflow/runtime/startProcess.do',
- 					data : param,
- 					dataType : 'json',
- 					contentType : "application/x-www-form-urlencoded;charset=UTF-8",
- 					success : function(data) {
- 						if (data.success) {
- 							alert("恭喜你，申请该流程成功！");
- 							location.href="<%=path%>/index.jsp";
- 						} else {
- 							alert(data.errorMsg);
- 						}
- 					},
- 					error : function(XMLHttpRequest,textStatus, errorThrown) {
- 						alert(textStatus);
- 					}
- 			 });
+			 	
+ 			if(!confirm("确定要申请该流程吗 ？")){
+ 				return;
+ 			}
+ 			
+ 			location.href="<%=path %>/workflow/processDef/processDefineApply.do?processDefinitionKey=" + key;
+ 			
  		 });
      });
      </script>

@@ -20,46 +20,52 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">系统流程定义列表</div>
+                                <div class="muted pull-left">我的代办任务</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group" style="padding-bottom: 20px;">
-                                         <a href="<%=path %>/workflow/process_define_upload.jsp"><button class="btn btn-success">发布流程 <i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group pull-right">
-                                         <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
-                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Print</a></li>
-                                            <li><a href="#">Save as PDF</a></li>
-                                            <li><a href="#">Export to Excel</a></li>
-                                         </ul>
                                       </div>
                                    </div>
                                     
                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
                                         <thead>
                                             <tr>
-                                                <th>名称</th>
-                                                <th>版本</th>
-                                                <th>Key</th>
-<!--                                                 <th>命名空间</th> -->
-                                                <th>描述</th>
+                                            	
+                                                <th>任务名称</th>
+                                                <th>任务创建时间</th>
+                                                <th>任务优先级</th>
+                                                <th>所属流程</th>
+                                                <th>当前处理人</th>
+                                                <th>最晚处理时间</th>
+                                                <th>申请人</th> 
+                                                <th>申请人邮件</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           <c:forEach items="${processDefineList }" var="pd">
+                                           <c:forEach items="${taskList }" var="ut">
                                            	 <tr class="odd gradeX">
-                                                <td>${pd.name }</td>
-                                                <td>${pd.version }</td>
-                                                <td>${pd.key }</td>
+                                           	 	<td>${ut.task.name }</td>
+                                           	 	<td>
+                                           	 		<fmt:formatDate value="${ut.task.createTime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                           	 	</td>
+                                           	 	<td>
+                                           	 		<span class="badge badge-info">${ut.task.priority }</span>
+                                           	 		
+                                           	 	</td>
+                                           	 	<td>${ut.processDefinition.name }</td>
+                                                <td>${ut.task.assignee }</td>
+                                                <td>${ut.task.dueDate }</td>
 <%--                                                 <td> ${pd.category }</td> --%>
-                                                <td>${pd.description }</td>
+												<td>${ut.applyUser.firstName }${ut.applyUser.lastName }</td>
+                                                <td>${ut.applyUser.email }</td>
                                                 <td>
-                                                	<button class="btn btn-success startProcess" data-key="${pd.key }">申请</button>
-                                                	
+                                                	<button class="btn btn-warning startProcess" data-key="${pd.key }">查看流程处理图</button>
+                                                	<button class="btn btn-success taskClaim" data-key="${ut.task.id}">处理</button>
                                                 	
                                                 </td>
                                             </tr>
@@ -82,29 +88,11 @@
      <script type="text/javascript">
 	  jQuery(function() {
     	 
-    	 //开始，启动一个流程
- 		$(".startProcess").click(function (){
+    	 //开始，处理任务
+ 		$(".taskClaim").click(function (){
  			
- 			var key = $(this).data("key");
- 			var param = "key="+key;
- 			$.ajax({
- 					type : 'post',
- 					url : '<%=path%>/workflow/runtime/startProcess.do',
- 					data : param,
- 					dataType : 'json',
- 					contentType : "application/x-www-form-urlencoded;charset=UTF-8",
- 					success : function(data) {
- 						if (data.success) {
- 							alert("恭喜你，申请该流程成功！");
- 							location.href="<%=path%>/index.jsp";
- 						} else {
- 							alert(data.errorMsg);
- 						}
- 					},
- 					error : function(XMLHttpRequest,textStatus, errorThrown) {
- 						alert(textStatus);
- 					}
- 			 });
+ 			var taskId = $(this).data("key");
+ 			location.href="<%=path %>/workflow/task/taskClaim.do?taskId=" + taskId;
  		 });
      });
      </script>
