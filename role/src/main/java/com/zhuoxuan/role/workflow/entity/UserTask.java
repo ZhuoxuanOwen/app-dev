@@ -1,4 +1,4 @@
-package com.zhuoxuan.rule.workflow.entity;
+package com.zhuoxuan.role.workflow.entity;
 
 import java.io.Serializable;
 

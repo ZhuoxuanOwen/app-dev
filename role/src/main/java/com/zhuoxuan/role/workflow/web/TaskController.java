@@ -1,4 +1,4 @@
-package com.zhuoxuan.rule.workflow.web;
+package com.zhuoxuan.role.workflow.web;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zhuoxuan.role.common.ResultBase;
 import com.zhuoxuan.role.common.RoleConstants;
-import com.zhuoxuan.rule.workflow.ao.TaskAO;
-import com.zhuoxuan.rule.workflow.entity.UserTask;
+import com.zhuoxuan.role.workflow.ao.TaskAO;
+import com.zhuoxuan.role.workflow.entity.UserTask;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.zhuoxuan.rule.workflow.ao;
+package com.zhuoxuan.role.workflow.ao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
 import com.zhuoxuan.role.common.ResultBase;
 import com.zhuoxuan.role.common.WorkFlowConstants;
-import com.zhuoxuan.rule.workflow.entity.UserTask;
+import com.zhuoxuan.role.workflow.entity.UserTask;
 
 /**
  * 
