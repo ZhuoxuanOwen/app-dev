@@ -9,7 +9,6 @@ import org.activiti.engine.FormService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.form.FormData;
 import org.activiti.engine.form.FormProperty;
-import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.task.Task;
 import org.springframework.stereotype.Controller;
